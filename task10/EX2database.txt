@@ -1,0 +1,42 @@
+-- im create database 3N in phpmyadmin
+create database 3N;
+
+-- im create table Products in database 3N in phpmyadmin
+CREATE TABLE Products (
+    product_name VARCHAR(50) PRIMARY KEY, 
+    product_price DECIMAL(10, 2) NOT NULL  
+);
+-- insert data into Products  in database 3N in phpmyadmin
+INSERT INTO Products (product_name, product_price) VALUES 
+( 'iPhone 15', 1200.00),
+( 'AirPods Pro', 250.00),
+( 'USB-C Cable', 20.00);
+
+-- im create table Orders in database 3N in phpmyadmin
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_name VARCHAR(50) NOT NULL,
+    product_name VARCHAR(50),             
+    FOREIGN KEY (product_name) REFERENCES Products(product_name)
+);
+
+-- insert data into Orders  in database 3N in phpmyadmin
+INSERT INTO Orders (order_id, customer_name, product_name) VALUES 
+(101, 'Ahmed Ali', 'iPhone 15'),     
+(102, 'Sara Hassan', 'AirPods Pro'),  
+(103, 'Zaid Omar', 'iPhone 15');
+
+
+-- partial dependency example
+-- student_id	course_id	student_name	course_name
+-- student_id -> student_name only
+-- course_id -> course_name only
+-- student_id , course_id  -> primary key    -> 2NF
+-- كي مركب هو الي بياشر فالكي الفردي يسمى بارشيل
+
+-- transitive dependency example
+-- emp_id  	emp_name	dept_id	     dept_name
+-- emp_id -> emp_name only
+-- dept_id -> dept_name only
+-- two table one primary key  -> 3NF
+-- كي واحد هو الاساس الي بياشر

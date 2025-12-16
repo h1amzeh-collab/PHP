@@ -1,0 +1,26 @@
+-- Create the students table with 3 columns in phpmyadmin
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,  
+    student_name VARCHAR(50) NOT NULL,          
+    birth_year YEAR                             
+);
+
+-- 2️ Insert 3 new students
+INSERT INTO students (student_name, birth_year) VALUES
+('Alice', 2001),   -- student 1
+('Bob', 1999),     -- student 2
+('Charlie', 2003); -- student 3
+
+-- 3️ Retrieve students born after 2000, ordered by name in phpmyadmin
+SELECT * FROM students
+WHERE birth_year > 2000
+ORDER BY student_name;
+
+-- 4️ Update email student based on name in phpmyadmin
+UPDATE students
+SET email = 'alice@example.com'
+WHERE student_name = 'Alice';
+
+-- 5️ Delete a student based on ID in phpmyadmin
+DELETE FROM students
+WHERE student_id = 2; -- 
