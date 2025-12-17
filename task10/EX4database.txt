@@ -35,3 +35,47 @@ SELECT city, COUNT(*)
 FROM users
 GROUP BY city
 HAVING COUNT(*) > 5;
+
+-- create Orders table in database test in phpmyadmin
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,  
+    user_id INT,                               
+    order_date DATE,                           
+    total_amount DECIMAL(10,2),                
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)  -- link to Users table
+);
+
+-- retrieve all users who have not placed any orders
+SELECT * FROM Users
+LEFT JOIN Order ON
+Users.user_id = Orders.user_id;
+WHERE order_id IS NULL;  
+
+-- calculate average order amount for each user in phpmyadmin
+select Users.user_id ,AVG(Orders.total_amount) from Users
+LEFT JOIN Orders ON
+Users.user_id = Orders.user_id
+GROUP BY Users.user_id , Orders.user_id;
+
+
+
+-- List users who spent more than the average.
+SELECT Users.user_id, SUM(Orders.total_amount) 
+FROM Users 
+JOIN Orders  ON Users.user_id = Orders.user_id
+GROUP BY Users.user_id;
+HAVING SUM(Orders.total_amount) > (SELECT AVG(total_amount) FROM Orders);
+
+
+--Create a UNION between newsletter subscribers and registered users.
+-- هذه تجلب المشتركين
+SELECT user_name, email, 'Subscriber' as status
+FROM users
+WHERE is_subscriber = 1
+
+UNION
+
+-- هذه تجلب غير المشتركين
+SELECT user_name, email, 'Not Subscriber' as status
+FROM users
+WHERE is_subscriber = 0;

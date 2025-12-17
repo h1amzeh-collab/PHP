@@ -1,0 +1,42 @@
+Data is raw thing i dont understand and i cannot take decision by it but maybe for other people it is information they can take decision on like table has random numbers i cannot take decision in it
+
+Information is processing raw data to become useful and has meaning we can take decision by it like student grades i can take decision
+
+Database it is storage or warehouse or like cabinet in data in organized and understood way and easy to go back to it and query it
+
+DBMS is mediator between me and data to get data based on conditions and edit and delete and add but it is not necessary to be SQL
+
+RDBMS here relational database management system it is based on relations and connected tables with each other and it is what we work on now
+
+
+
+لداتا هي اشي اولي انا ما بفهمو ولا يمكنني ان  اتخذ قرار به ولكن من الممكن ان يكون لغيري معلومة يستطيع اتخاذ قرار عليها 
+مثل جدول فيه ارقام عشوائية فلا استطيع اتخذا قرار فيها
+
+المعلومة هي معالجة البيانات الاولية لتصبح ذا فائدة وعنى يمكننا اتخاذ قرار بها 
+مثل علامات الطلاب فبستطيع اتخاذ قرار
+
+هو عبارة عن مخزن او مستودع او زي خزانة في البيانات بشكل منظم ومفهوم ويسهل الرجوع اليها واستعلامها
+
+نظام إدارة قواعد البيانات
+هو وسيط بيني وبين البيانات عشان اقدر اجيب الداتا بناء على شروط وتعديل وحذف واضافة  ولكنه ليس بالضرورة يكون س كيو لتصبح
+
+RDBMS
+هون نظام إدارة قواعد البيانات العلائقية بكون بناء على علاقات وجدوال مترابطة مع بعض  وهو الي بنشتغل عليه حالية
+
+
+
+
+
+A hospital system uses a database to store patient tables containing National IDs and names
+organized by departments
+It links these patients to a visit history table and another table for doctors, nurses
+and staff through relationships
+This setup makes it easy to organize data and retrieve visit times diagnosed diseases
+and prescribed medications quickly
+
+المستشفى 
+لازم يكون عندي جدول للمرضى كل قسم 
+فيه رقم الوطني واسمه ولازم يكون جدول عبارة عن تورايخ الزيارات مربوط بجدول المرضى 
+وكمان جدول لكل  الدكاترة والممرضين والموظفين 
+مما يسهل عليهم تنظيم بياناتهم واسترجاع اوقات زياراتهم وما هي امراضهم والادوية التي اخذوها و...
