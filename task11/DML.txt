@@ -1,0 +1,157 @@
+INSERT INTO Users (first_name, last_name, email, password, gender, user_type) 
+VALUES 
+('Ahmed', 'Ali', 'ahmed.ali@example.com', 'pass_ahmed_123', 'Male', 'Admin'),
+('Sara', 'Mansour', 'sara.m@example.com', 'sara_secure_456', 'Female', 'Customer'),
+('Mohamed', 'Hassan', 'm.hassan@example.com', 'mo_pass_789', 'Male', 'Customer'),
+('Layla', 'Mahmoud', 'layla.m@example.com', 'layla_pwd_012', 'Female', 'Customer'),
+('Omar', 'Khaled', 'omar.k@example.com', 'omar_admin_99', 'Male', 'Admin'),
+('Mona', 'Zaki', 'mona.z@example.com', 'mona_pass_321', 'Female', 'Customer'),
+('Youssef', 'Ibrahim', 'youssef.i@example.com', 'youssef_777', 'Male', 'Customer'),
+('Nour', 'Sami', 'nour.s@example.com', 'nour_secret_88', 'Female', 'Customer'),
+('Hany', 'Fawzy', 'hany.f@example.com', 'hany_p@101', 'Male', 'Customer'),
+('Mariam', 'Saad', 'mariam.s@example.com', 'mariam_pass_202', 'Female', 'Customer');
+
+
+INSERT INTO Addresses (address_name, country, city, street, building_number, phone_number, user_id) 
+VALUES 
+('Home', 'Egypt', 'Cairo', 'El-Tahrir St', '12B', '01012345671', 1),
+('Work', 'Egypt', 'Giza', 'Smart Village', 'Building 4', '01012345671', 1),
+('Home', 'Saudi Arabia', 'Riyadh', 'King Fahd Rd', '101', '0501234567', 2),
+('Home', 'UAE', 'Dubai', 'Sheikh Zayed Rd', 'Tower A', '0559876543', 3),
+('Home', 'Jordan', 'Amman', 'Rainbow St', '55', '0791234567', 4),
+('Work', 'Egypt', 'Alexandria', 'Corniche St', '10', '01234567890', 5),
+('Home', 'Kuwait', 'Kuwait City', 'Salmiya St', '3', '0965123456', 6),
+('Home', 'Egypt', 'Mansoura', 'Gaya St', '22', '01099887766', 7),
+('Home', 'Saudi Arabia', 'Jeddah', 'Tahlia St', '404', '0504433221', 8),
+('Home', 'Lebanon', 'Beirut', 'Hamra St', '9', '03123456', 9);
+
+
+INSERT INTO Categories (category_name, category_image) 
+VALUES 
+('Electronics', 'path/to/electronics.jpg'),
+('Fashion', 'path/to/fashion.jpg'),
+('Home & Kitchen', 'path/to/home.jpg'),
+('Books', 'path/to/books.jpg'),
+('Sports', 'path/to/sports.jpg'),
+('Beauty', 'path/to/beauty.jpg'),
+('Toys', 'path/to/toys.jpg'),
+('Automotive', 'path/to/auto.jpg'),
+('Garden', 'path/to/garden.jpg'),
+('Health', 'path/to/health.jpg');
+
+INSERT INTO Orders (user_id, shipping_date, shipping_address, total_quantity, total_price, order_status) 
+VALUES 
+(1, '2023-10-20', 'Cairo, Egypt, Tahrir St', 1, 999.99, 'Delivered'),
+(2, '2023-11-01', 'Riyadh, KSA, King Fahd Rd', 2, 151.00, 'Shipped'),
+(3, NULL, 'Dubai, UAE, Zayed Rd', 1, 45.00, 'Pending'),
+(4, '2023-11-15', 'Amman, Jordan, Rainbow St', 3, 89.97, 'Delivered'),
+(5, NULL, 'Alexandria, Egypt', 1, 120.00, 'Cancelled'),
+(6, '2023-12-01', 'Kuwait City, Salmiya', 1, 15.75, 'Shipped'),
+(7, NULL, 'Mansoura, Egypt', 2, 178.00, 'Pending'),
+(8, '2023-12-05', 'Jeddah, KSA', 1, 150.00, 'Delivered'),
+(9, NULL, 'Beirut, Lebanon', 1, 60.00, 'Pending'),
+(10, '2023-12-10', 'Cairo, Egypt', 1, 1200.00, 'Shipped');
+
+
+INSERT INTO Order_Items (order_id, product_id, quantity, price_at_purchase) 
+VALUES 
+(1, 1, 1, 999.99),
+(2, 2, 2, 75.50),
+(3, 3, 1, 45.00),
+(4, 4, 3, 29.99),
+(5, 5, 1, 120.00),
+(6, 6, 1, 15.75),
+(7, 7, 2, 89.00),
+(8, 8, 1, 150.00),
+(9, 9, 1, 60.00),
+(10, 10, 1, 1200.00);
+
+
+INSERT INTO Reviews (user_id, product_id, rating, comment_text) 
+VALUES 
+(1, 1, 5, 'Perfect phone, very fast!'),
+(2, 2, 4, 'Very comfortable for running.'),
+(3, 3, 3, 'Good coffee maker but a bit noisy.'),
+(4, 4, 5, 'Highly recommended for SQL beginners.'),
+(5, 5, 2, 'Stopped working after two weeks.'),
+(6, 6, 5, 'Excellent for my skin.'),
+(7, 7, 5, 'My kids love this Lego set.'),
+(8, 8, 4, 'Comfortable chair for long hours.'),
+(9, 9, 3, 'Standard weights, nothing special.'),
+(10, 10, 5, 'Amazing performance for gaming.');
+
+INSERT INTO Wishlist (user_id, product_id) 
+VALUES 
+(1, 10), (2, 5), (3, 1), (4, 8), (5, 2),
+(6, 4), (7, 9), (8, 3), (9, 7), (10, 6);
+
+
+
+
+-- update first name of user with user_id = 1
+UPDATE Users 
+SET first_name = 'Hamzeh' 
+ORDER BY user_id DESC 
+LIMIT 1;
+
+-- delete user with user_id = 10  AND user_id = 1
+DELETE FROM users WHERE user_id = 10;
+DELETE FROM users WHERE user_id = 1;
+
+-- display all products and users
+SELECT * FROM Products;
+SELECT * FROM users;
+
+-- display all orders with user details
+SELECT * FROM Orders 
+JOIN USERS ON Orders.user_id = Users.user_id;
+
+-- display all pending orders
+SELECT order_id, total_price, order_status 
+FROM Orders 
+WHERE order_status = 'Pending';
+
+-- display product names and prices of products priced above 100 with warranty
+SELECT product_name, price 
+FROM Products 
+WHERE price > 100 AND has_warranty = TRUE;
+
+-- display first and last names of all users ordered by last name ascending
+SELECT first_name, last_name 
+FROM Users 
+ORDER BY last_name ASC;
+
+-- display total number of delivered orders
+SELECT COUNT(order_id) AS total_delivered_orders 
+FROM Orders 
+WHERE order_status = 'Delivered';
+
+-- display total revenue from all non-cancelled orders
+SELECT SUM(total_price) AS total_revenue 
+FROM Orders 
+WHERE order_status != 'Cancelled';
+
+-- display average price of products in category_id = 1
+SELECT AVG(price) AS average_product_price 
+FROM Products 
+WHERE category_id = 1;
+
+
+
+
+· LEFT JOIN to show optional relationships
+
+-- combine data from Users Reviews and Wishlist tables BY inner join
+SELECT Users.user_id , Reviews.rating , Reviews.comment_text, Wishlist.product_id from Users
+INNER JOIN Reviews ON Users.user_id = Reviews.user_id
+INNER JOIN Wishlist ON Users.user_id = Wishlist.user_id;
+
+-- insert a new user and use LEFT JOIN to show all users with their reviews and wishlist items
+INSERT INTO Users (first_name, last_name, email, password, gender, user_type) 
+VALUES 
+('Hamzeh', 'Al-Omari', 'hamzeh@example.com', 'secure_pass_1', 'Male', 'Customer');
+
+--  combine data from Users Reviews and Wishlist tables BY left join
+SELECT Users.user_id , Reviews.rating , Reviews.comment_text, Wishlist.product_id from Users
+LEFT JOIN Reviews ON Users.user_id = Reviews.user_id
+LEFT JOIN Wishlist ON Users.user_id = Wishlist.user_id;
