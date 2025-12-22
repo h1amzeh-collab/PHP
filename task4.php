@@ -24,7 +24,7 @@ for ($i = 65; $i <= 69; $i++) {
     // if($i%5 == 0)
     for ($j = 1; $j <= 5; $j++) {
         if ($calc >= $j && $i < 69) {
-            echo "A";
+            echo "A ";
             continue;
         } else
             echo chr($i) . " ";

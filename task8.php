@@ -62,5 +62,5 @@ foreach ($words as $word) {
 }
 
 //task 8
-header("Location: https://www.w3schools.com/");
+// header("Location: https://www.w3schools.com/");
 ?>
